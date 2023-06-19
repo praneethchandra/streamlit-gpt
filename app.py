@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import matplotlib.ticker as ticker
 
 
 def main():
@@ -26,6 +27,8 @@ def main():
             st.write("Bar plot:")
             fig, ax = plt.subplots()
             sns.barplot(x=data[x_axis], y=data[y_axis], ax=ax)
+            ax.xaxis.set_major_locator(ticker.MaxNLocator(integer=True, nbins=10))
+            ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
             st.pyplot(fig)
         
         elif selected_plot == "Scatter plot":
@@ -34,6 +37,8 @@ def main():
             st.write("Scatter plot:")
             fig, ax = plt.subplots()
             sns.scatterplot(x=data[x_axis], y=data[y_axis], ax=ax)
+            ax.xaxis.set_major_locator(ticker.MaxNLocator(integer=True, nbins=10))
+            ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
             st.pyplot(fig)
 
         elif selected_plot == "Histogram":
@@ -42,6 +47,8 @@ def main():
             st.write("Histogram")
             fig, ax = plt.subplots()
             sns.histplot(data[column], bins=bins, ax=ax)
+            ax.xaxis.set_major_locator(ticker.MaxNLocator(integer=True, nbins=10))
+            ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
             st.pyplot(fig)
 
         elif selected_plot == "Box plot":
@@ -49,6 +56,8 @@ def main():
             st.write("Box plot")
             fig, ax = plt.subplots()
             sns.boxplot(data[column], ax=ax)
+            ax.xaxis.set_major_locator(ticker.MaxNLocator(integer=True, nbins=10))
+            ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
             st.pyplot(fig)
 
 if __name__ == '__main__':
